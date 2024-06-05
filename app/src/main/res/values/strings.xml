@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">SIBIPEDIAV2</string>
+    <string name="hello">Halo, Nama!</string>
+    <string name="welcome_text_1">Selamat datang di SIBISA,</string>
+    <string name="welcome_text_2">pintu Anda ke dunia bahasa isyarat Indonesia. Belajar, berinteraksi, dan terhubung dengan mudah di seluruh negeri. Mulai jelajahi sekarang!</string>
+    <string name="kamus_text_1">Kamus SIBI</string>
+    <string name="kamus_text_2">Pelajari alfabet SIBI dan kosakata umum di sini. Latih juga gestur alfabetik Anda!</string>
+    <string name="dictionary_desc">dictionary_pic</string>
+    <string name="quiz_text_1">Quiz SIBI</string>
+    <string name="quiz_text_2">Setelah mempelajari kata-kata dalam SIBI, uji kemampuan Anda dengan quiz!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="alphabet_image">alphabet image</string>
+    <string name="back">Back</string>
+    <string name="alphabet">Alfabet</string>
+    <string name="vocabulary">Vocabulary</string>
+    <string name="alphabet_text_2">Pelajari alfabet SIBI dan coba latih gestur alfabet dengan fitur kamera!</string>
+    <string name="vocab_text_2">Pelajari kosakata SIBI yang sering digunakan sehari-hari!</string>
+    <string name="Login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="don_t_have_an_account">Don’t have an Account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="full_name">Full Name</string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="already_have_account">Already have account?</string>
+    <string name="latihan_gestur">Latihan Gestur</string>
+    <string name="latihan_gestur_desc">Latihlah gestur anda dengan menekan tombol diatas</string>
+</resources>
