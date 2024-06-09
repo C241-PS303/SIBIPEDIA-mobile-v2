@@ -21,4 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "SIBIPEDIAV2"
 include(":app")
- 

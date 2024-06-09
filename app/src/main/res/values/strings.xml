@@ -31,4 +31,5 @@
     <string name="phone_number">Phone Number</string>
     <string name="profile_image">Profile Image</string>
     <string name="Buttonlogout">Logout</string>
+    <string name="hint_phone_number">Phone number (must start with +62)</string>
 </resources>
