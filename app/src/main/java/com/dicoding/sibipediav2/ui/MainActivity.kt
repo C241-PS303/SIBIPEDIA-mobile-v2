@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.quizCard.setOnClickListener {
+            // Implement your quiz activity navigation here
         }
     }
 }

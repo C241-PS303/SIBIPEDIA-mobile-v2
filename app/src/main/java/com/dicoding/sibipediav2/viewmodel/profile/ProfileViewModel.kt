@@ -14,7 +14,7 @@ class ProfileViewModel : ViewModel(){
 
     fun logout() {
         auth.signOut()
-        _logoutSuccess.value = true
+        _logoutSuccess.value = auth.currentUser == null
     }
 
 }
