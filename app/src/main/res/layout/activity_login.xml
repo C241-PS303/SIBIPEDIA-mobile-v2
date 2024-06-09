@@ -33,7 +33,7 @@
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username"
+            android:hint="@string/email"
             android:background="@android:drawable/editbox_background"
             android:padding="16dp"
             android:inputType="textEmailAddress"
