@@ -29,5 +29,6 @@
     <string name="latihan_gestur_desc">Latihlah gestur anda dengan menekan tombol diatas</string>
     <string name="username">Username</string>
     <string name="phone_number">Phone Number</string>
-    <string name="hint_phone_number">Phone number (must start with +62)</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="Buttonlogout">Logout</string>
 </resources>
