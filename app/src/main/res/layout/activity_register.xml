@@ -29,13 +29,13 @@
             android:layout_marginBottom="32dp" />
 
         <EditText
-            android:id="@+id/fullNameEditText"
+            android:id="@+id/usernameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/full_name"
+            android:hint="@string/username"
             android:background="@android:drawable/editbox_background"
             android:padding="16dp"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:layout_marginBottom="16dp" />
 
         <EditText
@@ -56,6 +56,26 @@
             android:background="@android:drawable/editbox_background"
             android:padding="16dp"
             android:inputType="textPassword"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/fullNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/full_name"
+            android:background="@android:drawable/editbox_background"
+            android:padding="16dp"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/phoneNumberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_phone_number"
+            android:background="@android:drawable/editbox_background"
+            android:padding="16dp"
+            android:inputType="phone"
             android:layout_marginBottom="16dp" />
 
         <Button
@@ -87,5 +107,17 @@
                 android:textColor="@android:color/holo_blue_dark"
                 android:layout_marginStart="4dp" />
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createAccountButton" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
