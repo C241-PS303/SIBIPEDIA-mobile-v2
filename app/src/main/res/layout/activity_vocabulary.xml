@@ -25,7 +25,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/vocabulary"
         android:textAppearance="?attr/textAppearanceHeadline6"
-        android:textColor="@color/black" />
+        android:textColor="@color/palatinate_blue" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/alphabetRecyclerView"
