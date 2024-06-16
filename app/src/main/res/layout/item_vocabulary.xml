@@ -15,20 +15,20 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/alphabetImage"
+            android:id="@+id/vocabularyImage"
             android:layout_width="154dp"
             android:layout_height="175dp"
             android:scaleType="centerCrop"
             android:src="@drawable/placeholder_image" />
 
         <TextView
-            android:id="@+id/alphabetLetter"
+            android:id="@+id/vocabularyWord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/alphabetImage"
             android:gravity="center"
             android:layout_marginTop="8dp"
-            android:text="A"
+            android:text="Aku"
             android:textColor="@android:color/black"
             android:textSize="24sp"
             tools:ignore="Poppins"/>

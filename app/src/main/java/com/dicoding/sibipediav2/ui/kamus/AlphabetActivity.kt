@@ -1,8 +1,8 @@
 package com.dicoding.sibipediav2.ui.kamus
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.datastore.core.IOException
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dicoding.sibipediav2.databinding.ActivityAlphabetBinding
 import com.dicoding.sibipediav2.data.remote.retrofit.ApiConfig
@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
+import java.io.IOException
 
 class AlphabetActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlphabetBinding
@@ -21,15 +22,24 @@ class AlphabetActivity : AppCompatActivity() {
         binding = ActivityAlphabetBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.alphabetRecyclerView.layoutManager = GridLayoutManager(this, 2)
-        alphabetAdapter = AlphabetAdapter(emptyList())
-        binding.alphabetRecyclerView.adapter = alphabetAdapter
-
+        setupRecyclerView()
         fetchAlphabetData()
 
         binding.backButton.setOnClickListener {
             finish()
         }
+    }
+
+    private fun setupRecyclerView() {
+        binding.alphabetRecyclerView.layoutManager = GridLayoutManager(this, 2)
+        alphabetAdapter = AlphabetAdapter(emptyList()) { alphabetItem ->
+            val intent = Intent(this, GestureDetailActivity::class.java).apply {
+                putExtra("gestureImage", alphabetItem.image)
+                putExtra("gestureTitle", alphabetItem.name)
+            }
+            startActivity(intent)
+        }
+        binding.alphabetRecyclerView.adapter = alphabetAdapter
     }
 
     private fun fetchAlphabetData() {
@@ -45,18 +55,15 @@ class AlphabetActivity : AppCompatActivity() {
                         binding.progressBar.visibility = android.view.View.GONE
                     }
                 } else {
-                    // Handle the error
                     withContext(Dispatchers.Main) {
                         binding.progressBar.visibility = android.view.View.GONE
                     }
                 }
             } catch (e: IOException) {
-                // Handle the IOException
                 withContext(Dispatchers.Main) {
                     binding.progressBar.visibility = android.view.View.GONE
                 }
             } catch (e: HttpException) {
-                // Handle the HttpException
                 withContext(Dispatchers.Main) {
                     binding.progressBar.visibility = android.view.View.GONE
                 }
