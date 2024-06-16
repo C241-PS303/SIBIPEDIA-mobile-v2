@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.profileImage.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
+           startActivity(intent)
         }
 
         binding.dictionaryCard.setOnClickListener {
