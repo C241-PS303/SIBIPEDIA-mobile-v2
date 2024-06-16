@@ -10,8 +10,10 @@ import com.bumptech.glide.Glide
 import com.dicoding.sibipediav2.R
 import com.dicoding.sibipediav2.data.remote.response.AlphabetItem
 
-class AlphabetAdapter(private var alphabetList: List<AlphabetItem>) :
-    RecyclerView.Adapter<AlphabetAdapter.AlphabetViewHolder>() {
+class AlphabetAdapter(
+    private var alphabetList: List<AlphabetItem>,
+    private val onItemClick: (AlphabetItem) -> Unit
+) : RecyclerView.Adapter<AlphabetAdapter.AlphabetViewHolder>() {
 
     class AlphabetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.alphabetImage)
@@ -29,6 +31,10 @@ class AlphabetAdapter(private var alphabetList: List<AlphabetItem>) :
         Glide.with(holder.itemView.context)
             .load(currentItem.image)
             .into(holder.imageView)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(currentItem)
+        }
     }
 
     override fun getItemCount() = alphabetList.size

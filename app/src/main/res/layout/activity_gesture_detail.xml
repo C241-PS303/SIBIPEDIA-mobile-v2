@@ -6,6 +6,7 @@
     tools:context=".ui.kamus.GestureDetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -21,8 +22,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/baseline_arrow_back_24"
-                android:contentDescription="@string/back" />
+                android:contentDescription="@string/back"
+                android:src="@drawable/baseline_arrow_back_24" />
 
             <TextView
                 android:id="@+id/gestureTitle"
@@ -32,6 +33,7 @@
                 android:text="@string/latihan_gestur"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="@color/black"
+                android:textSize="24sp"
                 android:gravity="center" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -40,12 +42,21 @@
         android:id="@+id/gestureImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.5"
-        android:scaleType="fitCenter" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout3" />
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progressBar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toTopOf="@id/gestureImageView"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/gestureImageView"-->
+<!--        app:layout_constraintStart_toStartOf="@id/gestureImageView"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/gestureImageView"-->
+<!--        android:visibility="gone" />-->
 
     <Button
         android:id="@+id/practiceButton"
