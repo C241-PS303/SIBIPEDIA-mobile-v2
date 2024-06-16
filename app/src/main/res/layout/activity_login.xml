@@ -27,6 +27,7 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:gravity="center"
+            android:textColor="@color/palatinate_blue"
             android:layout_marginBottom="32dp" />
 
         <EditText
@@ -35,6 +36,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:background="@android:drawable/editbox_background"
+            android:textColor="@color/black"
             android:padding="16dp"
             android:inputType="textEmailAddress"
             android:layout_marginBottom="16dp" />
@@ -45,6 +47,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:background="@android:drawable/editbox_background"
+            android:textColor="@color/black"
             android:padding="16dp"
             android:inputType="textPassword"
             android:layout_marginBottom="16dp" />
@@ -67,7 +70,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/don_t_have_an_account" />
+                android:text="@string/don_t_have_an_account"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/signUpTextView"
