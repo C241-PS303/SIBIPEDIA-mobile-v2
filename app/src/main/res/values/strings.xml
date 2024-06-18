@@ -2,7 +2,7 @@
     <string name="app_name">SIBIPEDIAV2</string>
     <string name="hello">Hello, %1$s</string>
     <string name="welcome_text_1">Selamat datang di SIBISA,</string>
-    <string name="welcome_text_2">pintu Anda ke dunia bahasa isyarat Indonesia. Belajar, berinteraksi, dan terhubung dengan mudah di seluruh negeri. Mulai jelajahi sekarang!</string>
+    <string name="welcome_text_2">pintu Anda ke dunia bahasa isyarat Indonesia. Mulai jelajahi sekarang!</string>
     <string name="kamus_text_1">Kamus SIBI</string>
     <string name="kamus_text_2">Pelajari alfabet SIBI dan kosakata umum di sini. Latih juga gestur alfabetik Anda!</string>
     <string name="dictionary_desc">dictionary_pic</string>
@@ -34,4 +34,8 @@
     <string name="profile_image">Profile Image</string>
     <string name="Buttonlogout">Logout</string>
     <string name="hint_phone_number">Phone number (must start with +62)</string>
+    <string name="image_classifier_failed">Classifier failed</string>
+    <string name="kosa_kata">Kosa Kata</string>
+    <string name="quiz_image_description">quiz description</string>
+    <string name="quiz_desc">Anda akan diberikan serangkaian pertanyaan pilihan ganda untuk menguji pemahaman Anda tentang bahasa isyarat SIBI. Jawablah dengan teliti untuk melihat seberapa jauh Anda telah menguasai materi yang telah disajikan. Mari kita mulai!</string>
 </resources>

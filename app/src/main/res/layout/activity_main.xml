@@ -73,7 +73,7 @@
                 android:layout_width="64dp"
                 android:layout_height="82dp"
                 android:gravity="center"
-                android:src="@drawable/welcome_img" />
+                android:src="@drawable/img_1" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -168,7 +168,7 @@
                 android:layout_height="82dp"
                 android:contentDescription="@string/quiz_text_2"
                 android:gravity="center"
-                android:src="@drawable/quiz_img" />
+                android:src="@drawable/img" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -70,19 +70,33 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textSize="18sp"
-            android:text="Nama Lengkap"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
             android:textSize="14sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="#757575" />
 
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#757575" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
     </LinearLayout>
+
+
 
     <TextView
         android:layout_width="match_parent"
