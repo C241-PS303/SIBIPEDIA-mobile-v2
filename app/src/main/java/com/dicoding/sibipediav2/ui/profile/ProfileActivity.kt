@@ -5,13 +5,16 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.sibipediav2.databinding.ActivityProfileBinding
+import com.dicoding.sibipediav2.ui.adapter.QuizScoreAdapter
 import com.dicoding.sibipediav2.ui.auth.LoginActivity
 import com.dicoding.sibipediav2.viewmodel.profile.ProfileViewModel
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
     private val profileViewModel: ProfileViewModel by viewModels()
+    private lateinit var adapter: QuizScoreAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +25,12 @@ class ProfileActivity : AppCompatActivity() {
             profileViewModel.logout()
         }
 
+        adapter = QuizScoreAdapter()
+        binding.rvHistorySkor.layoutManager = LinearLayoutManager(this)
+        binding.rvHistorySkor.adapter = adapter
+
         profileViewModel.fetchProfile()
+        profileViewModel.fetchUserQuizRecords()
         observeViewModel()
     }
 
@@ -41,8 +49,17 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
+        profileViewModel.userQuizRecords.observe(this) { records ->
+            val quizRecords = records.values.toList()
+            adapter.setQuizRecords(quizRecords)
+        }
+
         profileViewModel.isLoading.observe(this) { isLoading ->
             binding.progressBar.isVisible = isLoading
+        }
+
+        binding.btnBack.setOnClickListener {
+            finish()
         }
     }
 

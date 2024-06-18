@@ -8,6 +8,7 @@ import com.dicoding.sibipediav2.R
 import com.dicoding.sibipediav2.databinding.ActivityMainBinding
 import com.dicoding.sibipediav2.ui.kamus.KamusActivity
 import com.dicoding.sibipediav2.ui.profile.ProfileActivity
+import com.dicoding.sibipediav2.ui.quiz.QuizActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -42,7 +43,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.quizCard.setOnClickListener {
-            // Implement your quiz activity navigation here
+            val intent = Intent(this@MainActivity, QuizActivity::class.java)
+            startActivity(intent)
         }
     }
 }

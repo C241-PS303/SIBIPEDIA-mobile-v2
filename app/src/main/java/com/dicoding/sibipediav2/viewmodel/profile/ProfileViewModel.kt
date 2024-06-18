@@ -3,10 +3,13 @@ package com.dicoding.sibipediav2.viewmodel.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.dicoding.sibipediav2.data.remote.response.ProfileResponse
+import com.dicoding.sibipediav2.data.remote.response.QuizRecord
 import com.dicoding.sibipediav2.data.remote.response.UserData
 import com.dicoding.sibipediav2.data.remote.retrofit.ApiConfig
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,6 +21,9 @@ class ProfileViewModel : ViewModel() {
 
     private val _profile = MutableLiveData<UserData?>()
     val profile: MutableLiveData<UserData?> = _profile
+
+    private val _userQuizRecords = MutableLiveData<Map<String, QuizRecord>>()
+    val userQuizRecords: LiveData<Map<String, QuizRecord>> get() = _userQuizRecords
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -45,5 +51,20 @@ class ProfileViewModel : ViewModel() {
                 _profile.value = null
             }
         })
+    }
+
+    fun fetchUserQuizRecords() {
+        _isLoading.value = true
+        viewModelScope.launch {
+            try {
+                val response = ApiConfig.getApiService().getUserQuizRecords()
+                _userQuizRecords.postValue(response)
+            } catch (e: Exception) {
+                // Handle error
+                e.printStackTrace()
+            } finally {
+                _isLoading.postValue(false)
+            }
+        }
     }
 }
