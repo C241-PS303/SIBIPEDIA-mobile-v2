@@ -13,4 +13,3 @@ data class KamusItem(
     val imageUrl: String
 
     ) : Parcelable
-

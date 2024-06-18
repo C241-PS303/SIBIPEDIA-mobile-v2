@@ -1,38 +1,50 @@
 package com.dicoding.sibipediav2.ui.kamus
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.dicoding.sibipediav2.databinding.ActivityGestureDetailBinding
+import com.dicoding.sibipediav2.ui.camera.CameraActivity
 
 class GestureDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGestureDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityGestureDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         binding.backButton.setOnClickListener {
             onBackPressed()
         }
 
-        // Get the gesture data from the intent
-        val gestureImage = intent.getIntExtra("gestureImage", 0)
+        val gestureImage = intent.getStringExtra("gestureImage")
         val gestureTitle = intent.getStringExtra("gestureTitle") ?: ""
 
-        // Set the gesture data
-        binding.gestureImageView.setImageResource(gestureImage)
+        Glide.with(this)
+            .load(gestureImage)
+            .into(binding.gestureImageView)
         binding.gestureTitle.text = gestureTitle
 
-        // Handle practice button click
         binding.practiceButton.setOnClickListener {
-            // Handle the practice button action
+            val intent = Intent(this, CameraActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

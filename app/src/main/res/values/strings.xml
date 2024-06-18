@@ -8,12 +8,14 @@
     <string name="dictionary_desc">dictionary_pic</string>
     <string name="quiz_text_1">Quiz SIBI</string>
     <string name="quiz_text_2">Setelah mempelajari kata-kata dalam SIBI, uji kemampuan Anda dengan quiz!</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="alphabet_image">alphabet image</string>
     <string name="back">Back</string>
     <string name="alphabet">Alfabet</string>
     <string name="vocabulary">Vocabulary</string>
+    <string name="Kamus_SIBI">Kamus SIBI</string>
     <string name="alphabet_text_2">Pelajari alfabet SIBI dan coba latih gestur alfabet dengan fitur kamera!</string>
     <string name="vocab_text_2">Pelajari kosakata SIBI yang sering digunakan sehari-hari!</string>
     <string name="Login">Login</string>

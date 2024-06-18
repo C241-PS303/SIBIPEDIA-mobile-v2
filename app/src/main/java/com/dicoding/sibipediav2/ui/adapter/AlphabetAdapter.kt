@@ -1,22 +1,23 @@
 package com.dicoding.sibipediav2.ui.kamus
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.dicoding.sibipediav2.R
-import com.dicoding.sibipediav2.data.local.AlphabetItem
+import com.dicoding.sibipediav2.data.remote.response.AlphabetItem
 
-class AlphabetAdapter(private val alphabetList: List<AlphabetItem>) :
-    RecyclerView.Adapter<AlphabetAdapter.AlphabetViewHolder>() {
+class AlphabetAdapter(
+    private var alphabetList: List<AlphabetItem>,
+    private val onItemClick: (AlphabetItem) -> Unit
+) : RecyclerView.Adapter<AlphabetAdapter.AlphabetViewHolder>() {
 
     class AlphabetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.alphabetImage)
         val textView: TextView = itemView.findViewById(R.id.alphabetLetter)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlphabetViewHolder {
@@ -26,9 +27,20 @@ class AlphabetAdapter(private val alphabetList: List<AlphabetItem>) :
 
     override fun onBindViewHolder(holder: AlphabetViewHolder, position: Int) {
         val currentItem = alphabetList[position]
-        holder.imageView.setImageResource(currentItem.imageAlphabet)
-        holder.textView.text = currentItem.teks
+        holder.textView.text = currentItem.name
+        Glide.with(holder.itemView.context)
+            .load(currentItem.image)
+            .into(holder.imageView)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(currentItem)
+        }
     }
 
     override fun getItemCount() = alphabetList.size
+
+    fun setData(newAlphabetList: List<AlphabetItem>) {
+        alphabetList = newAlphabetList
+        notifyDataSetChanged()
+    }
 }
