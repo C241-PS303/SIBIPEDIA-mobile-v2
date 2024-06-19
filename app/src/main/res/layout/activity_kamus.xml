@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
         android:layout_margin="16dp"
-        app:cardBackgroundColor="#4285F4"
+        app:cardBackgroundColor="@color/purple"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp">
 
@@ -88,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/alphabetCard"
         android:layout_margin="16dp"
-        app:cardBackgroundColor="#4285F4"
+        app:cardBackgroundColor="@color/purple"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp" >
 
@@ -107,7 +107,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/vocabulary"
+                    android:text="@string/kosa_kata"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
