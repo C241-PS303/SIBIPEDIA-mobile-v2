@@ -34,6 +34,7 @@ class GestureDetailActivity : AppCompatActivity() {
 
         binding.practiceButton.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
+            intent.putExtra("EXPECTED_GESTURE", gestureTitle)
             startActivity(intent)
         }
     }

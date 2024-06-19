@@ -4,4 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="palatinate_blue">#1949D8</color>
     <color name="lavender">#E2E8FA</color>
+    <color name="purple">#A254A3</color>
+    <color name="navy">#0E3789</color>
+    <color name="light_blue">#53B2E3</color>
 </resources>
