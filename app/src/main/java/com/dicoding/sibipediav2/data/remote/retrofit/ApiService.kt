@@ -5,7 +5,6 @@ import com.dicoding.sibipediav2.data.remote.response.AlphabetResponse
 import com.dicoding.sibipediav2.data.remote.request.RegisterRequest
 import com.dicoding.sibipediav2.data.remote.request.VerificationRequest
 import com.dicoding.sibipediav2.data.remote.response.RegisterResponse
-import com.dicoding.sibipediav2.data.remote.response.VocabularyResponse
 import com.dicoding.sibipediav2.data.remote.response.ProfileResponse
 import com.dicoding.sibipediav2.data.remote.response.QuestionResponse
 import com.dicoding.sibipediav2.data.remote.response.QuizRecord
@@ -25,7 +24,7 @@ interface ApiService {
     suspend fun getAlphabet() : Response<AlphabetResponse>
 
     @GET("sibi/words")
-    suspend fun getVocabulary(): Response<VocabularyResponse>
+    suspend fun getVocabulary(): Response<AlphabetResponse>
 
     @GET("profile")
     fun getProfile() : Call<ProfileResponse>

@@ -92,7 +92,7 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun provideFeedback(detectedGesture: String) {
-        val detectedChar = detectedGesture.split(" ")[2] // Assuming the format is "Detected sign: X with confidence: Y%"
+        val detectedChar = detectedGesture.split(" ")[2]
         Log.d(TAG, "Comparing detected gesture: $detectedChar with expected gesture: $expectedGesture")
 
         if (detectedChar.equals(expectedGesture, ignoreCase = true)) {
