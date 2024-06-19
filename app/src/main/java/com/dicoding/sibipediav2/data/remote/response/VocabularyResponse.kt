@@ -1,12 +1,17 @@
-package com.dicoding.sibipediav2.data.remote.response
-
-data class VocabularyResponse(
-    val status: Int,
-    val message: String,
-    val data: List<VocabularyItem>
-)
-
-data class VocabularyItem(
-    val word: String,
-    val image: String
-)
+//package com.dicoding.sibipediav2.data.remote.response
+//
+//data class VocabularyResponse(
+//	val signedUrl: SignedUrl? = null
+//)
+//
+//data class DataItem(
+//	val image: String? = null,
+//	val name: String? = null
+//)
+//
+//data class SignedUrl(
+//	val data: List<DataItem?>? = null,
+//	val message: String? = null,
+//	val status: Int? = null
+//)
+//

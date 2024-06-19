@@ -42,7 +42,7 @@ class VocabularyActivity : AppCompatActivity() {
             try {
                 val response = apiService.getVocabulary()
                 if (response.isSuccessful) {
-                    val vocabularyList = response.body()?.data ?: emptyList()
+                    val vocabularyList = response.body()?.signedUrl?.data ?: emptyList()
                     withContext(Dispatchers.Main) {
                         vocabularyAdapter.setData(vocabularyList)
                         binding.progressBar.visibility = android.view.View.GONE

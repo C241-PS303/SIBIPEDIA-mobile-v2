@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.sibipediav2.R
-import com.dicoding.sibipediav2.data.remote.response.VocabularyItem
+import com.dicoding.sibipediav2.data.remote.response.AlphabetItem
 
-class VocabularyAdapter(private var vocabularyList: List<VocabularyItem>) :
+class VocabularyAdapter(private var vocabularyList: List<AlphabetItem>) :
     RecyclerView.Adapter<VocabularyAdapter.VocabularyViewHolder>() {
 
     class VocabularyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,7 +25,7 @@ class VocabularyAdapter(private var vocabularyList: List<VocabularyItem>) :
 
     override fun onBindViewHolder(holder: VocabularyViewHolder, position: Int) {
         val currentItem = vocabularyList[position]
-        holder.textView.text = currentItem.word
+        holder.textView.text = currentItem.name
         Glide.with(holder.itemView.context)
             .load(currentItem.image)
             .into(holder.imageView)
@@ -33,8 +33,8 @@ class VocabularyAdapter(private var vocabularyList: List<VocabularyItem>) :
 
     override fun getItemCount() = vocabularyList.size
 
-    fun setData(newVocabularyList: List<VocabularyItem>) {
-        vocabularyList = newVocabularyList
+    fun setData(newAlphabetList: List<AlphabetItem>) {
+        vocabularyList = newAlphabetList
         notifyDataSetChanged()
     }
 }
