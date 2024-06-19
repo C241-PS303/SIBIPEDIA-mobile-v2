@@ -69,7 +69,6 @@ class CameraActivity : AppCompatActivity() {
                 .also {
                     it.setAnalyzer(cameraExecutor, ImageAnalyzer { bitmap ->
                         runOnUiThread {
-                            binding.capturedImageView.setImageBitmap(bitmap)
                             val result = signLanguageDetector.detectSignLanguage(bitmap)
                             Log.d(TAG, "Detected Gesture: $result")
                             binding.resultTextView.text = result
