@@ -1,8 +1,8 @@
 package com.dicoding.sibipediav2.ml
 
-
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.util.Log
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
@@ -24,8 +24,13 @@ class SignLanguageDetector(private val context: Context) {
     fun detectSignLanguage(bitmap: Bitmap): String {
         val model = Sibipedia.newInstance(context)
 
+        val grayscaleBitmap = convertToGrayscale(bitmap)
+        val resizedBitmap = Bitmap.createScaledBitmap(grayscaleBitmap, 150, 150, true)
+
+        Log.d(TAG, "Processed Bitmap: ${resizedBitmap.width}x${resizedBitmap.height}")
+
         val tensorImage = TensorImage(DataType.FLOAT32)
-        tensorImage.load(bitmap)
+        tensorImage.load(resizedBitmap)
 
         val imageProcessor = ImageProcessor.Builder()
             .add(ResizeOp(150, 150, ResizeOp.ResizeMethod.BILINEAR))
@@ -44,15 +49,27 @@ class SignLanguageDetector(private val context: Context) {
 
         model.close()
 
-        val outputShape = outputFeature0.shape
-        val outputDataType = outputFeature0.dataType
         val outputData = outputFeature0.floatArray
 
-        Log.d(TAG, "Output Shape: ${outputShape.contentToString()}")
-        Log.d(TAG, "Output Data Type: $outputDataType")
         Log.d(TAG, "Output Data: ${outputData.contentToString()}")
 
         return processOutput(outputFeature0)
+    }
+
+    private fun convertToGrayscale(bitmap: Bitmap): Bitmap {
+        val width = bitmap.width
+        val height = bitmap.height
+        val grayscaleBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+
+        for (y in 0 until height) {
+            for (x in 0 until width) {
+                val pixel = bitmap.getPixel(x, y)
+                val gray = (Color.red(pixel) * 0.299 + Color.green(pixel) * 0.587 + Color.blue(pixel) * 0.114).toInt()
+                val newPixel = Color.rgb(gray, gray, gray)
+                grayscaleBitmap.setPixel(x, y, newPixel)
+            }
+        }
+        return grayscaleBitmap
     }
 
     private fun processOutput(outputFeature: TensorBuffer): String {
@@ -60,6 +77,8 @@ class SignLanguageDetector(private val context: Context) {
         val maxIndex = probabilities.indices.maxByOrNull { probabilities[it] } ?: -1
         val confidence = probabilities[maxIndex] * 100
         val predictedLabel = CLASS_LABELS[maxIndex]
+
+        Log.d(TAG, "Predicted Label: $predictedLabel, Confidence: $confidence")
 
         return "Detected sign: $predictedLabel with confidence: $confidence%"
     }

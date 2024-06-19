@@ -2,7 +2,9 @@ package com.dicoding.sibipediav2.ui.camera
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
@@ -21,15 +23,20 @@ class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var signLanguageDetector: SignLanguageDetector
+    private lateinit var expectedGesture: String
 
     companion object {
         private const val REQUEST_CAMERA_PERMISSION = 1
+        private const val TAG = "CameraActivity"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        expectedGesture = intent.getStringExtra("EXPECTED_GESTURE") ?: ""
+        Log.d(TAG, "Expected Gesture: $expectedGesture")
 
         signLanguageDetector = SignLanguageDetector(this)
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -61,9 +68,12 @@ class CameraActivity : AppCompatActivity() {
                 .build()
                 .also {
                     it.setAnalyzer(cameraExecutor, ImageAnalyzer { bitmap ->
-                        val result = signLanguageDetector.detectSignLanguage(bitmap)
                         runOnUiThread {
+                            binding.capturedImageView.setImageBitmap(bitmap)
+                            val result = signLanguageDetector.detectSignLanguage(bitmap)
+                            Log.d(TAG, "Detected Gesture: $result")
                             binding.resultTextView.text = result
+                            provideFeedback(result)
                         }
                     })
                 }
@@ -76,9 +86,21 @@ class CameraActivity : AppCompatActivity() {
                     this as LifecycleOwner, cameraSelector, preview, imageAnalyzer
                 )
             } catch(exc: Exception) {
+                Log.e(TAG, "Camera binding failed", exc)
             }
 
         }, ContextCompat.getMainExecutor(this))
+    }
+
+    private fun provideFeedback(detectedGesture: String) {
+        val detectedChar = detectedGesture.split(" ")[2] // Assuming the format is "Detected sign: X with confidence: Y%"
+        Log.d(TAG, "Comparing detected gesture: $detectedChar with expected gesture: $expectedGesture")
+
+        if (detectedChar.equals(expectedGesture, ignoreCase = true)) {
+            binding.feedbackView.setBackgroundColor(Color.GREEN)
+        } else {
+            binding.feedbackView.setBackgroundColor(Color.RED)
+        }
     }
 
     override fun onRequestPermissionsResult(
